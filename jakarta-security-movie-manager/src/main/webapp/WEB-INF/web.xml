@@ -30,9 +30,9 @@
         <servlet-name>H2Console</servlet-name>
         <url-pattern>/h2-console/*</url-pattern>
     </servlet-mapping>
-    <!--
+
     <security-role>
-        <role-name>admin</role-name>
+        <role-name>IT</role-name>
     </security-role>
     <security-constraint>
         <web-resource-collection>
@@ -40,10 +40,10 @@
             <url-pattern>/h2-console/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>admin</role-name>
+            <role-name>IT</role-name>
         </auth-constraint>
     </security-constraint>
-    -->
+
 
     <security-role>
         <role-name>Sales</role-name>
@@ -53,20 +53,20 @@
         <role-name>Administration</role-name>
     </security-role>
 
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>ViewMovies</web-resource-name>
-            <url-pattern>/movies/index</url-pattern>
-            <url-pattern>/movies/index.xhtml</url-pattern>
-            <url-pattern>/movies/details</url-pattern>
-            <url-pattern>/movies/details.xhtml</url-pattern>
+<!--    <security-constraint>-->
+<!--        <web-resource-collection>-->
+<!--            <web-resource-name>ViewMovies</web-resource-name>-->
+<!--            <url-pattern>/movies/index</url-pattern>-->
+<!--            <url-pattern>/movies/index.xhtml</url-pattern>-->
+<!--            <url-pattern>/movies/details</url-pattern>-->
+<!--            <url-pattern>/movies/details.xhtml</url-pattern>-->
 
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>Sales</role-name>
-            <role-name>Administration</role-name>
-        </auth-constraint>
-    </security-constraint>
+<!--        </web-resource-collection>-->
+<!--        <auth-constraint>-->
+<!--            <role-name>Sales</role-name>-->
+<!--            <role-name>Administration</role-name>-->
+<!--        </auth-constraint>-->
+<!--    </security-constraint>-->
 
 
     <security-constraint>
@@ -93,8 +93,21 @@
     </security-constraint>
 
 
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/errorpages/403.xhtml</location>
+    </error-page>
 
-
+    <security-constraint>
+        <display-name>Use HTTPS only</display-name>
+        <web-resource-collection>
+            <web-resource-name>sslResources</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
 
 
 </web-app>
